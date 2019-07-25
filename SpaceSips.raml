@@ -1,0 +1,125 @@
+#%RAML 1.0
+title: SpaseShips
+version: 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/8cf56fb6-7460-4633-b45e-9a8963b7f990/ # baseUri: www.SpaceShips.com
+
+/:
+  displayName: Ships list page
+  description: This's list of ships page from StarTrack
+  get:
+    description: Shows table of ships
+    queryParameters:
+      pageSize:
+        displayName: Number of Records
+        type: integer
+        example: 5        
+        minimum: 1
+        maximum: 20
+        default: 5
+        required: false
+      pageNumber:
+        displayName: Page number
+        type: integer
+        example: 1
+        minimum: 1
+        maximum: 999
+        default: 1
+        required: false
+    responses:
+      200:
+        description: Resived list of ships
+        body:
+          application/json:
+            description: List<Ships> json
+            example:
+              {
+              "Ships" : [{
+                  "name":"USS Enterprise",
+                  "crewSize":600,
+                  "speed": 9.8,
+                  "raiting": 4.75
+                }, {
+                  "name":"USS Malflower",
+                  "crewSize":150,
+                  "speed": 9.7,
+                  "raiting": 4.05
+                }]
+              }
+  put:
+    displayName: Add new Ship
+    description: Adding new ship in DB
+    body:
+      application/json:
+        example:
+         {
+            "Ship" : {
+              "name":"USS Enterprise",
+              "crewSize":600,
+              "speed": 9.8,
+              "raiting": 4.75
+            }
+         }
+    responses:
+      201:
+        description: Ship saccsesfuly added
+      401:
+        description: Name is not allowed
+      402:
+        description: CrewSize is wrong
+      403:
+        description: Speed is wrong
+  post:
+    queryParameters:
+      id:
+        description: Ship ID
+        type: integer
+        minimum: 0
+        required: true
+      name:
+        description: Ship name
+        type: string
+        minLength: 3
+        maxLength: 32
+        required: false
+      crewSize:
+        description: Crew size of the Ship
+        type: integer
+        minimum: 0
+        maximum: 10000
+        required: false
+      speed:
+        description: Speed of the Ship
+        type: number
+        minimum: 1
+        maximum: 10
+        required: false     
+/{id}:
+  get:
+    displayName: Get ship with ID x
+    description: Get ship with ID #
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+                "Ship" : {
+                "name":"USS Enterprise",
+                "crewSize":600,
+                "speed": 9.8,
+                "raiting": 4.75
+                }
+              }
+      400:
+        description: Ship with that ID does not exist in DB
+      401:
+        description: Wrong ID type
+  delete:
+    description: Delite ship with that ID
+    responses:
+      204:
+        description: Saccessfuly delited
+      400:
+        description: Ship with that ID does not exist
+      401:
+        description: ID has wrong type
