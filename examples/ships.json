@@ -1,0 +1,13 @@
+{
+  "Ships" : [{
+    "name":"USS Enterprise",
+    "crewSize":600,
+    "speed": 9.8,
+    "raiting": 4.75
+  }, {
+    "name":"USS Malflower",
+    "crewSize":150,
+    "speed": 9.7,
+    "raiting": 4.05
+  }]
+}
