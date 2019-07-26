@@ -1,7 +1,13 @@
 #%RAML 1.0
 title: SpaceShips
 version: 1.0
-baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/8cf56fb6-7460-4633-b45e-9a8963b7f990/ # baseUri: www.SpaceShips.com
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/299b5807-5b4e-4433-bce8-64bd84819e2d/ # baseUri: www.SpaceShips.com
+
+securitySchemes:
+  oauth_1_0: !include securitySchemes/oauth_1_0.raml
+
+traits:
+  errorsThrows: !include traits/errorsThrows.raml
 
 types:
   Ship:
@@ -16,6 +22,8 @@ types:
       raiting: number
 
 /ships:
+  is: [errorsThrows]
+  securedBy: [oauth_1_0]
   displayName: Ships list page
   description: This's list of ships page from StarTrack
   get:
@@ -39,10 +47,10 @@ types:
     responses:
       201:
         description: Ship successfully added
-      404:
-        description: Ship parameters is not allowed
 
 /ships/{id}:
+  is: [errorsThrows]
+  securedBy: [oauth_1_0]
   description: Operations on 1 ship
   displayName: Operate on 1 ship
   get:
@@ -54,8 +62,6 @@ types:
           application/json:
             example:
               !include examples/ship.json
-      404:
-        description: Ship with that ID does not exist in DB
   put:
     description: Update ship
     displayName: Update ship query
@@ -69,5 +75,3 @@ types:
     responses:
       200:
         description: Successfully deleted
-      404:
-        description: Ship with that ID does not exist
