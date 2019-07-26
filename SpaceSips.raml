@@ -3,8 +3,9 @@ title: SpaceShips
 version: 1.0
 baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/299b5807-5b4e-4433-bce8-64bd84819e2d/ # baseUri: www.SpaceShips.com
 
+
 securitySchemes:
-  oauth_1_0: !include securitySchemes/oauth_1_0.raml
+  BAuth_1: !include securitySchemes/oauth_1_0.raml
 
 traits:
   errorsThrows: !include traits/errorsThrows.raml
@@ -21,9 +22,10 @@ types:
       speed: number
       raiting: number
 
+securedBy: [BAuth_1]
+
 /ships:
   is: [errorsThrows]
-  securedBy: [oauth_1_0]
   displayName: Ships list page
   description: This's list of ships page from StarTrack
   get:
@@ -36,21 +38,21 @@ types:
           application/json:
             description: List<Ships> json
             example:
-              !include examples/ships.json
+              type: Ship[]
+              example: !include examples/ship.json
   post:
     displayName: Add new Ship
     description: Adding new ship in DB
     body:
       application/json:
-        example:
-          !include examples/ship.json
+        type: Ship
+        example: !include examples/ship.json
     responses:
       201:
         description: Ship successfully added
 
 /ships/{id}:
   is: [errorsThrows]
-  securedBy: [oauth_1_0]
   description: Operations on 1 ship
   displayName: Operate on 1 ship
   get:
@@ -60,8 +62,8 @@ types:
       200:
         body:
           application/json:
-            example:
-              !include examples/ship.json
+            type: Ship
+            example: !include examples/ship.json
   put:
     description: Update ship
     displayName: Update ship query
@@ -69,7 +71,8 @@ types:
       201:
         body:
           application/json:
-            !include examples/ship.json
+            type: Ship
+            example: !include examples/ship.json
   delete:
     description: Delete ship with that ID
     responses:
