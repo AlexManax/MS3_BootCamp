@@ -1,8 +1,7 @@
 {
-  "Ship" : {
-    "name":"USS Enterprise",
-    "crewSize":600,
-    "speed": 9.8,
-    "raiting": 4.75
-  }
+  "id": "0",
+  "name":"USS Enterprise",
+  "crewSize":600,
+  "speed": 9.8,
+  "raiting": 4.75
 }

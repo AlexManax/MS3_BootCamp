@@ -3,7 +3,6 @@ title: SpaceShips
 version: 1.0
 baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/299b5807-5b4e-4433-bce8-64bd84819e2d/ # baseUri: www.SpaceShips.com
 
-
 securitySchemes:
   BAuth_1: !include securitySchemes/BAuth_1_0.raml
 
@@ -11,16 +10,7 @@ traits:
   errorsThrows: !include traits/errorsThrows.raml
 
 types:
-  Ship:
-    type: object
-    properties:
-      id:
-        required: false
-        type: integer
-      name: string
-      crewSize: integer
-      speed: number
-      raiting: number
+  shipType: !include types/typeShip.raml
 
 securedBy: [BAuth_1]
 
@@ -45,7 +35,7 @@ securedBy: [BAuth_1]
     description: Adding new ship in DB
     body:
       application/json:
-        type: Ship
+        type: shipType
         example: !include examples/ship.json
     responses:
       201:
@@ -62,7 +52,7 @@ securedBy: [BAuth_1]
       200:
         body:
           application/json:
-            type: Ship
+            type: shipType
             example: !include examples/ship.json
   put:
     description: Update ship
@@ -71,7 +61,7 @@ securedBy: [BAuth_1]
       201:
         body:
           application/json:
-            type: Ship
+            type: shipType
             example: !include examples/ship.json
   delete:
     description: Delete ship with that ID
