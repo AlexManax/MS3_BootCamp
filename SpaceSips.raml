@@ -16,10 +16,8 @@ securedBy: [BAuth_1]
 
 /ships:
   is: [errorsThrows]
-  displayName: Ships list page
   description: This's list of ships page from StarTrack
   get:
-    displayName: Shows ships page
     description: Shows table of ships
     responses:
       200:
@@ -31,7 +29,6 @@ securedBy: [BAuth_1]
               type: Ship[]
               example: !include examples/ship.json
   post:
-    displayName: Add new Ship
     description: Adding new ship in DB
     body:
       application/json:
@@ -44,7 +41,6 @@ securedBy: [BAuth_1]
 /ships/{id}:
   is: [errorsThrows]
   description: Operations on 1 ship
-  displayName: Operate on 1 ship
   get:
     displayName: Get ship with ID x
     description: Get ship with ID #
@@ -56,15 +52,29 @@ securedBy: [BAuth_1]
             example: !include examples/ship.json
   put:
     description: Update ship
-    displayName: Update ship query
+    body:
+      application/json:
+        type: shipType
+        example: !include examples/ship.json
     responses:
       201:
-        body:
-          application/json:
-            type: shipType
-            example: !include examples/ship.json
+        description: Ship was updated
   delete:
     description: Delete ship with that ID
     responses:
-      200:
+      204:
         description: Successfully deleted
+/ships/{id}/members:
+  is: [errorsThrows]
+  description: retrieves list of crew members for a specific ship
+  get:
+    description: GET retrieves list of crew members for a specific ship
+    responses:
+      200:
+        description: Received list of crew members
+        body:
+          application/json:
+            description: List<CrewMember> json
+            example:
+              type: CrewMember[]
+              example: !include examples/crewMember.json
