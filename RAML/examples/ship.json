@@ -1,8 +1,6 @@
 {
   "idShip": 0,
   "name":"USS Enterprise",
-  "crewSize":600,
-  "speed": 9.8,
-  "raiting": 4.75,
-  "crewMembers": [1, 3, 5]
+  "crewSize":6,
+  "speed": 9.8
 }
