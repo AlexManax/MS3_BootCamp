@@ -10,8 +10,8 @@ traits:
   errorsThrows: !include traits/errorsThrows.raml
 
 types:
-  shipType: !include types/typeShip.raml
-
+  typeShip: !include types/typeShip.raml
+  typeMember: !include types/typeMember.raml
 securedBy: [BAuth_1]
 
 /ships:
@@ -32,7 +32,7 @@ securedBy: [BAuth_1]
     description: Adding new ship in DB
     body:
       application/json:
-        type: shipType
+        type: typeShip
         example: !include examples/ship.json
     responses:
       201:
@@ -48,13 +48,13 @@ securedBy: [BAuth_1]
       200:
         body:
           application/json:
-            type: shipType
+            type: typeShip
             example: !include examples/ship.json
   put:
     description: Update ship
     body:
       application/json:
-        type: shipType
+        type: typeShip
         example: !include examples/ship.json
     responses:
       201:
@@ -78,3 +78,26 @@ securedBy: [BAuth_1]
             example:
               type: CrewMember[]
               example: !include examples/crewMember.json
+  post:
+    description: Add new crew member to this ship
+    body:
+      application/json:
+        type: typeMember
+        example: !include examples/crewMember.json
+    responses:
+      201:
+        description: Crew member successfully added
+  put:
+    description: Update crew member
+    body:
+      application/json:
+        type: typeMember
+        example: !include examples/crewMember.json
+    responses:
+      201:
+        description: Crew member successfully updated
+  delete:
+    description: Delete crew member
+    responses:
+      204:
+        description: Crew member successfully removed
