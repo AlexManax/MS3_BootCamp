@@ -1,3 +1,13 @@
 # MS3_BootCamp
 RAML documentation
-+ Spring boot Maven project
+
+07/29
+Updated: 
+PUT and POST method configured similarly
+DELETE method response changed to 204 (empty body).
+
+Added:
+new endpoint "member" (Crew member).
+GET, POST, PUT, and DELETE mrthods to member resource.
+new Type "typeMember".
+new example "crewMember".
