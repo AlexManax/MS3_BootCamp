@@ -1,7 +1,7 @@
 #%RAML 1.0
 title: SpaceShips
 version: 1.0
-baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/299b5807-5b4e-4433-bce8-64bd84819e2d/ # baseUri: www.SpaceShips.com
+baseUri: www.SpaceShips.com
 
 securitySchemes:
   BAuth_1: !include securitySchemes/BAuth_1_0.raml
@@ -64,10 +64,12 @@ securedBy: [BAuth_1]
     responses:
       204:
         description: Successfully deleted
-/ships/{id}/members:
+/members:
   is: [errorsThrows]
   description: retrieves list of crew members for a specific ship
   get:
+    queryParameters:
+      noShip?: boolean
     description: GET retrieves list of crew members for a specific ship
     responses:
       200:
@@ -87,6 +89,7 @@ securedBy: [BAuth_1]
     responses:
       201:
         description: Crew member successfully added
+/members/{id}:
   put:
     description: Update crew member
     body:
