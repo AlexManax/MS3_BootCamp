@@ -57,7 +57,7 @@ securedBy: [BAuth_1]
         type: typeShip
         example: !include examples/ship.json
     responses:
-      201:
+      204:
         description: Ship was updated
   delete:
     description: Delete ship with that ID
@@ -97,7 +97,7 @@ securedBy: [BAuth_1]
         type: typeMember
         example: !include examples/crewMember.json
     responses:
-      201:
+      204:
         description: Crew member successfully updated
   delete:
     description: Delete crew member
