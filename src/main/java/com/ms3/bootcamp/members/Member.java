@@ -1,25 +1,29 @@
-package com.ms3.bootcamp.members.entity;
+package com.ms3.bootcamp.members;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-
+@Entity
+@Table(name = "crewmembers", schema = "starTrackShips")
 public class Member {
 
-
+    @Id
+    @Column(name = "idmember", nullable = false)
     private int idMember;
+    @Column(name = "namemember", nullable = false)
     private String nameMember;
-    private int rank;
+    @Column(name = "rankmember", nullable = false)
+    private int rankMember;
+    @Column(name = "idship", nullable = false)
     private int idShip;
 
     public Member() {
     }
 
-    public Member(int idMember, String nameMember, int rank, int idShip) {
+    public Member(int idMember, String nameMember, int rankMember, int idShip) {
         super();
         this.idMember = idMember;
         this.nameMember = nameMember;
-        this.rank = rank;
+        this.rankMember = rankMember;
         this.idShip = idShip;
     }
 
@@ -39,12 +43,12 @@ public class Member {
         this.nameMember = nameMember;
     }
 
-    public int getRank() {
-        return rank;
+    public int getRankMember() {
+        return rankMember;
     }
 
-    public void setRank(int rank) {
-        this.rank = rank;
+    public void setRankMember(int rankMember) {
+        this.rankMember = rankMember;
     }
 
     public int getIdShip() {

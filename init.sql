@@ -1,40 +1,40 @@
-CREATE DATABASE IF NOT EXISTS starTrackShips
+CREATE DATABASE IF NOT EXISTS startrackships
     COLLATE utf8_general_ci;
 
-USE starTrackShips;
+USE startrackships;
 
 DROP TABLE IF EXISTS ship;
 
 CREATE TABLE ship
 (
-    idShip   INTEGER  NOT NULL AUTO_INCREMENT,
-    nameShip VARCHAR(50) NULL,
-    crewSize INTEGER(4)  NULL,
+    idship   INTEGER  NOT NULL AUTO_INCREMENT,
+    nameship VARCHAR(50) NULL,
+    crewsize INTEGER(4)  NULL,
     speed    double      NULL,
     PRIMARY KEY (idShip)
 )
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8;
 
-INSERT INTO ship(nameShip, crewSize, speed)
+INSERT INTO ship(nameship, crewsize, speed)
 values ('USS Enterprise', 5, 9.9),
        ('Mayflyer', 3, 9.7);
 
 
-DROP TABLE IF EXISTS crewMembers;
+DROP TABLE IF EXISTS crewmembers;
 
-CREATE TABLE crewMembers
+CREATE TABLE crewmembers
 (
-    idMember   INTEGER(5)  NOT NULL AUTO_INCREMENT,
-    nameMember VARCHAR(50) NULL,
-    rankMember INTEGER(2)  NULL,
-    idShip     INTEGER(4)  NULL,
+    idmember   INTEGER(5)  NOT NULL AUTO_INCREMENT,
+    namemember VARCHAR(50) NULL,
+    rankmember INTEGER(2)  NULL,
+    idship     INTEGER(4)  NULL,
     PRIMARY KEY (idMember)
 )
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8;
 
-INSERT INTO crewMembers(nameMember, rankMember, idShip)
+INSERT INTO crewmembers(namemember, rankmember, idship)
 values ('Capitan Kirk', 10, 1),
        ('Capitan Black', 10, 1),
        ('Spoke', 10, 2);

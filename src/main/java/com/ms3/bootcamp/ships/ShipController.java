@@ -1,14 +1,13 @@
-package com.ms3.bootcamp.ships.controllers;
+package com.ms3.bootcamp.ships;
 
-import com.ms3.bootcamp.ships.entity.Ship;
-import com.ms3.bootcamp.ships.service.ShipService;
+import com.ms3.bootcamp.httpErrors.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-public class ShipsController {
+public class ShipController {
 
     @Autowired
     private ShipService shipService;
@@ -20,20 +19,29 @@ public class ShipsController {
 
     @RequestMapping("/ships/{idShip}")
     public Ship getShip(@PathVariable int idShip) {
-        return shipService.getShip(idShip);
+        if (shipService.isExist(idShip)) {
+            return shipService.getShip(idShip);
+        } else {
+            throw new NotFoundException("Ship with ID " + idShip + " not found");
+        }
     }
 
-    @RequestMapping(value = "/ships", method = RequestMethod.POST)
+    @PostMapping(value = "/ships")
     public void addShip(@RequestBody Ship ship) {
         shipService.addShips(ship);
     }
 
-    @RequestMapping(value = "/ships/{idShip}", method = RequestMethod.PUT)
+    @PutMapping(value = "/ships/{idShip}")
     public void updateShip(@PathVariable int idShip, @RequestBody Ship ship) {
-        shipService.updateShips(idShip, ship);
+        if (shipService.isExist(idShip)) {
+            ship.setIdShip(idShip);
+            shipService.updateShips(ship);
+        } else {
+            throw new NotFoundException("Ship " + ship + " with ID " + idShip + " not found");
+        }
     }
 
-    @RequestMapping(value = "/ships/{idShip}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/ships/{idShip}")
     public void deleteShip(@PathVariable int idShip) {
         shipService.deleteShip(idShip);
     }

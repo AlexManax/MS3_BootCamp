@@ -1,7 +1,7 @@
-package com.ms3.bootcamp.ships.service;
+package com.ms3.bootcamp.ships;
 
-import com.ms3.bootcamp.ships.entity.Ship;
-import com.ms3.bootcamp.ships.reposetory.ShipRepository;
+import com.ms3.bootcamp.ships.Ship;
+import com.ms3.bootcamp.ships.ShipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +13,7 @@ public class ShipService {
 
     @Autowired
     private ShipRepository shipRepository;
-//
-//    private List<Ship> ships = new ArrayList<>(Arrays.asList(
-//            new Ship(1, "USS", 10, 9.9),
-//            new Ship(1, "Enterprise", 10, 9.9),
-//            new Ship(2, "USS", 10, 9.9),
-//            new Ship(3, "Enterprise", 10, 9.9)
-//    ));
+
 
     public List<Ship> getAllShips() {
         List<Ship> shipList = new ArrayList<>();
@@ -36,11 +30,15 @@ public class ShipService {
         shipRepository.save(ship);
     }
 
-    public void updateShips(int idShip, Ship ship) {
+    public void updateShips(Ship ship) {
         shipRepository.save(ship);
     }
 
     public void deleteShip(int idShip) {
         shipRepository.delete(idShip);
+    }
+
+    public boolean isExist(int idShip) {
+        return shipRepository.exists(idShip);
     }
 }

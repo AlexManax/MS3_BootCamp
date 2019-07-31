@@ -1,15 +1,21 @@
-package com.ms3.bootcamp.ships.entity;
+package com.ms3.bootcamp.ships;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name = "ship", schema = "starTrackShips")
 public class Ship {
 
     @Id
+    @Column(name = "idship", nullable = false)
     private int idShip;
+    @Column(name = "nameship", nullable = false)
     private String nameShip;
+    @Column(name = "crewsize", nullable = false)
     private int crewSize;
     private double speed;
 
@@ -56,4 +62,13 @@ public class Ship {
         this.speed = speed;
     }
 
+    @Override
+    public String toString() {
+        return "Ship{" +
+                "idShip=" + idShip +
+                ", nameShip='" + nameShip + '\'' +
+                ", crewSize=" + crewSize +
+                ", speed=" + speed +
+                '}';
+    }
 }
