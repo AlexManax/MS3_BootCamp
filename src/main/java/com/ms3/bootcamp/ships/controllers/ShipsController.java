@@ -1,8 +1,7 @@
-package com.ms3.bootcamp.controllers;
+package com.ms3.bootcamp.ships.controllers;
 
-import com.ms3.bootcamp.entity.Member;
-import com.ms3.bootcamp.entity.Ship;
-import com.ms3.bootcamp.service.ShipService;
+import com.ms3.bootcamp.ships.entity.Ship;
+import com.ms3.bootcamp.ships.service.ShipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,12 +14,12 @@ public class ShipsController {
     private ShipService shipService;
 
     @RequestMapping("/ships")
-    public List<Ship> sayHi() {
+    public List<Ship> getAllShips() {
         return shipService.getAllShips();
     }
 
     @RequestMapping("/ships/{idShip}")
-    public Ship getShip(@PathVariable String idShip) {
+    public Ship getShip(@PathVariable int idShip) {
         return shipService.getShip(idShip);
     }
 

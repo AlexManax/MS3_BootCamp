@@ -1,24 +1,27 @@
-package com.ms3.bootcamp.entity;
+package com.ms3.bootcamp.ships.entity;
 
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+
+@Entity
 public class Ship {
+
+    @Id
     private int idShip;
     private String nameShip;
     private int crewSize;
     private double speed;
-    private List<Member> members = null;
 
     public Ship() {
     }
 
-    public Ship(int idShip, String nameShip, int crewSize, double speed, List<Member> members) {
+    public Ship(int idShip, String nameShip, int crewSize, double speed) {
         super();
         this.idShip = idShip;
         this.nameShip = nameShip;
         this.crewSize = crewSize;
         this.speed = speed;
-        this.members = members;
     }
 
     public int getIdShip() {
@@ -53,11 +56,4 @@ public class Ship {
         this.speed = speed;
     }
 
-    public List<Member> getMembers() {
-        return members;
-    }
-
-    public void setMembers(List<Member> members) {
-        this.members = members;
-    }
 }

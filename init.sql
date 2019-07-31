@@ -3,11 +3,11 @@ CREATE DATABASE IF NOT EXISTS starTrackShips
 
 USE starTrackShips;
 
-DROP TABLE IF EXISTS ships;
+DROP TABLE IF EXISTS ship;
 
-CREATE TABLE ships
+CREATE TABLE ship
 (
-    idShip   INTEGER(4)  NOT NULL AUTO_INCREMENT,
+    idShip   INTEGER  NOT NULL AUTO_INCREMENT,
     nameShip VARCHAR(50) NULL,
     crewSize INTEGER(4)  NULL,
     speed    double      NULL,
@@ -16,7 +16,7 @@ CREATE TABLE ships
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8;
 
-INSERT INTO ships(nameShip, crewSize, speed)
+INSERT INTO ship(nameShip, crewSize, speed)
 values ('USS Enterprise', 5, 9.9),
        ('Mayflyer', 3, 9.7);
 

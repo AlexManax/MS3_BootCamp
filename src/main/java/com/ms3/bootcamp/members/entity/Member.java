@@ -1,6 +1,12 @@
-package com.ms3.bootcamp.entity;
+package com.ms3.bootcamp.members.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 
 public class Member {
+
+
     private int idMember;
     private String nameMember;
     private int rank;
