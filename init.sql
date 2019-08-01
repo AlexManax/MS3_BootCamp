@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS ship;
 
 CREATE TABLE ship
 (
-    idship   INTEGER  NOT NULL AUTO_INCREMENT,
+    idship   INTEGER     NOT NULL AUTO_INCREMENT,
     nameship VARCHAR(50) NULL,
     crewsize INTEGER(4)  NULL,
     speed    double      NULL,
@@ -38,6 +38,28 @@ INSERT INTO crewmembers(namemember, rankmember, idship)
 values ('Capitan Kirk', 10, 1),
        ('Capitan Black', 10, 1),
        ('Spoke', 10, 2);
+
+DROP TABLE IF EXISTS user;
+
+CREATE TABLE user
+(
+    id                    INTEGER(5)  NOT NULL AUTO_INCREMENT,
+    username              VARCHAR(50) NOT NULL,
+    password              varchar(100) NOT NULL,
+    authorities           VARCHAR(10)  NOT NULL,
+    accountnonexpired     BOOLEAN     NOT NULL,
+    accountnonlocked      BOOLEAN     NOT NULL,
+    credentialsnonexpired BOOLEAN     NOT NULL,
+    enabled               BOOLEAN     NOT NULL,
+
+    PRIMARY KEY (id)
+)
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO user(username, password, authorities, accountnonexpired, accountnonlocked, credentialsnonexpired, enabled)
+VALUES ('user', '$2a$10$kKmLugy7McZIHnVJaUJeCu2ZD3ochJ/4jiwUA8HimH2ZW6A7/.4Sm', 'USER', true, true, true, true),
+       ('admin', '$2a$10$kKmLugy7McZIHnVJaUJeCu2ZD3ochJ/4jiwUA8HimH2ZW6A7/.4Sm', 'ADMIN', true, true, true, true);
 
 # insert into ship(name, planet, shipType, prodDate, isUsed, speed, crewSize, rating)
 # values ('Orion III', 'Mars', 'MERCHANT', '2995-01-01', true, 0.82, 617, 1.31)

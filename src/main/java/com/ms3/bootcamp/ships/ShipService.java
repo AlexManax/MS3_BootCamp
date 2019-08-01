@@ -1,7 +1,6 @@
 package com.ms3.bootcamp.ships;
 
-import com.ms3.bootcamp.ships.Ship;
-import com.ms3.bootcamp.ships.ShipRepository;
+import com.ms3.bootcamp.members.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,16 +13,25 @@ public class ShipService {
     @Autowired
     private ShipRepository shipRepository;
 
+    @Autowired
+    private MemberRepository memberRepository;
+
 
     public List<Ship> getAllShips() {
         List<Ship> shipList = new ArrayList<>();
         shipRepository.findAll()
-                .forEach(shipList::add);
+                .forEach(ship -> {
+                            ship.setMemberList(memberRepository.findAllByIdShip(ship.getIdShip()));
+                            shipList.add(ship);
+                        }
+                );
         return shipList;
     }
 
     public Ship getShip(int idShip) {
-        return shipRepository.findOne(idShip);
+        Ship ship = shipRepository.findOne(idShip);
+        ship.setMemberList(memberRepository.findAllByIdShip(idShip));
+        return ship;
     }
 
     public void addShips(Ship ship) {

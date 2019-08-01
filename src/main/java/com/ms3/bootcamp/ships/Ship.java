@@ -1,9 +1,11 @@
 package com.ms3.bootcamp.ships;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.ms3.bootcamp.members.Member;
+import org.springframework.web.bind.annotation.DeleteMapping;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -20,6 +22,10 @@ public class Ship {
     @Column(name = "speed", nullable = false)
     private double speed;
 
+    @Transient
+    private List<Member> memberList;
+
+
     public Ship() {
     }
 
@@ -29,6 +35,7 @@ public class Ship {
         this.nameShip = nameShip;
         this.crewSize = crewSize;
         this.speed = speed;
+        memberList.add(new Member(1,"sddgjhvskvksjfvksjfns",3,1));
     }
 
     public int getIdShip() {
@@ -61,6 +68,14 @@ public class Ship {
 
     public void setSpeed(double speed) {
         this.speed = speed;
+    }
+
+    public void setMemberList(List<Member> memberList) {
+        this.memberList = memberList;
+    }
+
+    public List<Member> getMemberList() {
+        return memberList;
     }
 
     @Override
