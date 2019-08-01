@@ -17,6 +17,7 @@ public class Ship {
     private String nameShip;
     @Column(name = "crewsize", nullable = false)
     private int crewSize;
+    @Column(name = "speed", nullable = false)
     private double speed;
 
     public Ship() {
