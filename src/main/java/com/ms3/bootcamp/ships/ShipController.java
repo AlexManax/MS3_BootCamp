@@ -12,12 +12,12 @@ public class ShipController {
     @Autowired
     private ShipService shipService;
 
-    @RequestMapping("/ships")
+    @GetMapping("/ships")
     public List<Ship> getAllShips() {
         return shipService.getAllShips();
     }
 
-    @RequestMapping("/ships/{idShip}")
+    @GetMapping("/ships/{idShip}")
     public Ship getShip(@PathVariable int idShip) {
         if (shipService.isExist(idShip)) {
             return shipService.getShip(idShip);
@@ -28,7 +28,7 @@ public class ShipController {
 
     @PostMapping(value = "/ships")
     public void addShip(@RequestBody Ship ship) {
-        shipService.addShips(ship);
+        shipService.addShips(new Ship(ship.getNameShip(), ship.getCrewSize(), ship.getSpeed()));
     }
 
     @PutMapping(value = "/ships/{idShip}")

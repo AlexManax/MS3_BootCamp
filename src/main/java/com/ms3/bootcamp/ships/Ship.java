@@ -7,17 +7,17 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "ship", schema = "starTrackShips")
+@Table(name = "ships", schema = "starTrackShips")
 public class Ship {
 
     @Id
     @Column(name = "idship", nullable = false)
     private int idShip;
-    @Column(name = "nameship", nullable = false)
+    @Column(name = "nameship", nullable = true)
     private String nameShip;
-    @Column(name = "crewsize", nullable = false)
+    @Column(name = "crewsize", nullable = true)
     private int crewSize;
-    @Column(name = "speed", nullable = false)
+    @Column(name = "speed", nullable = true)
     private double speed;
 
     @Transient
@@ -30,6 +30,12 @@ public class Ship {
     public Ship(int idShip, String nameShip, int crewSize, double speed) {
         super();
         this.idShip = idShip;
+        this.nameShip = nameShip;
+        this.crewSize = crewSize;
+        this.speed = speed;
+    }
+
+    public Ship(String nameShip, int crewSize, double speed) {
         this.nameShip = nameShip;
         this.crewSize = crewSize;
         this.speed = speed;

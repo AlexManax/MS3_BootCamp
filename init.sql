@@ -3,9 +3,9 @@ CREATE DATABASE IF NOT EXISTS startrackships
 
 USE startrackships;
 
-DROP TABLE IF EXISTS ship;
+DROP TABLE IF EXISTS ships;
 
-CREATE TABLE ship
+CREATE TABLE ships
 (
     idship   INTEGER     NOT NULL AUTO_INCREMENT,
     nameship VARCHAR(50) NULL,
@@ -16,7 +16,7 @@ CREATE TABLE ship
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8;
 
-INSERT INTO ship(nameship, crewsize, speed)
+INSERT INTO ships(nameship, crewsize, speed)
 values ('USS Enterprise-A', 5, 4),
        ('USS Enterprise-D', 5, 6),
        ('USS Enterprise-E', 5, 7),
@@ -32,8 +32,10 @@ CREATE TABLE crewmembers
     idmember   INTEGER(5)  NOT NULL AUTO_INCREMENT,
     namemember VARCHAR(50) NULL,
     rankmember INTEGER(2)  NULL,
-    idship     INTEGER(4)  NULL,
-    PRIMARY KEY (idMember)
+    idship     INTEGER(5)  NULL,
+    PRIMARY KEY (idMember),
+    FOREIGN KEY (idship) REFERENCES ships (idship)
+    ON DELETE SET NULL
 )
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8;
@@ -51,9 +53,11 @@ values ('James T. Kirk', 10, 1),
        ('Amanda Grayson', 10, 5),
        ('Spoke', 10, 6);
 
-DROP TABLE IF EXISTS user;
 
-CREATE TABLE user
+
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users
 (
     id                    INTEGER(5)   NOT NULL AUTO_INCREMENT,
     username              VARCHAR(50)  NOT NULL,
@@ -69,6 +73,6 @@ CREATE TABLE user
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8;
 
-INSERT INTO user(username, password, authorities, accountnonexpired, accountnonlocked, credentialsnonexpired, enabled)
+INSERT INTO users(username, password, authorities, accountnonexpired, accountnonlocked, credentialsnonexpired, enabled)
 VALUES ('user', '$2a$10$kKmLugy7McZIHnVJaUJeCu2ZD3ochJ/4jiwUA8HimH2ZW6A7/.4Sm', 'USER', true, true, true, true),
        ('admin', '$2a$10$kKmLugy7McZIHnVJaUJeCu2ZD3ochJ/4jiwUA8HimH2ZW6A7/.4Sm', 'ADMIN', true, true, true, true);
