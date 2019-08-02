@@ -1,9 +1,12 @@
 package com.ms3.bootcamp.members;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "crewmembers", schema = "starTrackShips")
+@Data
 public class Member {
 
     @Id
@@ -19,59 +22,10 @@ public class Member {
     public Member() {
     }
 
-    public Member(Integer idMember, String nameMember, int rankMember, Integer idShip) {
-        super();
-        this.idMember = idMember;
-        this.nameMember = nameMember;
-        this.rankMember = rankMember;
-        this.idShip = idShip;
-    }
-
     public Member(String nameMember, int rankMember, Integer idShip) {
         this.nameMember = nameMember;
         this.rankMember = rankMember;
         this.idShip = idShip;
     }
 
-    public Integer getIdMember() {
-        return idMember;
-    }
-
-    public void setIdMember(Integer idMember) {
-        this.idMember = idMember;
-    }
-
-    public String getNameMember() {
-        return nameMember;
-    }
-
-    public void setNameMember(String nameMember) {
-        this.nameMember = nameMember;
-    }
-
-    public int getRankMember() {
-        return rankMember;
-    }
-
-    public void setRankMember(int rankMember) {
-        this.rankMember = rankMember;
-    }
-
-    public Integer getIdShip() {
-        return idShip;
-    }
-
-    public void setIdShip(Integer idShip) {
-        this.idShip = idShip;
-    }
-
-    @Override
-    public String toString() {
-        return "Member{" +
-                "idMember=" + idMember +
-                ", nameMember='" + nameMember + '\'' +
-                ", rankMember=" + rankMember +
-                ", idShip=" + idShip +
-                '}';
-    }
 }
