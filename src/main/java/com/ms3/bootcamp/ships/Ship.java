@@ -1,10 +1,8 @@
 package com.ms3.bootcamp.ships;
 
 import com.ms3.bootcamp.members.Member;
-import org.springframework.web.bind.annotation.DeleteMapping;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -35,7 +33,6 @@ public class Ship {
         this.nameShip = nameShip;
         this.crewSize = crewSize;
         this.speed = speed;
-        memberList.add(new Member(1,"sddgjhvskvksjfvksjfns",3,1));
     }
 
     public int getIdShip() {
