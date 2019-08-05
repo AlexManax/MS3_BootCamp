@@ -12,7 +12,7 @@ public class ShipController {
     @Autowired
     private ShipService shipService;
 
-    @GetMapping("/ships")
+    @GetMapping({"/ships", "/"})
     public List<Ship> getAllShips() {
         return shipService.getAllShips();
     }
