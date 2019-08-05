@@ -11,12 +11,12 @@ pipeline {
     stages {
         stage("First step") {
             steps {
-               sh 'mvn --clean'
+               sh 'mvn clean package'
             }
         }
         stage("Second step") {
             steps {
-               sh 'mvn --test'
+               sh 'mvn -test'
             }
         }
     }
