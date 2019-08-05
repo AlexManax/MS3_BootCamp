@@ -68,7 +68,7 @@ public class MemberController extends Cloneable {
         }
     }
 
-    @DeleteMapping(value = "/members/{idMember}")
+    @DeleteMapping(value = {"/members/{idMember}", "/ships/{idShip}/members/{idMember}", "/ships/members/{idMember}"})
     public void deleteMember(@PathVariable int idMember) {
         if (memberService.isExist(idMember)) {
             memberService.deleteMember(idMember);
