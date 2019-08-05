@@ -1,46 +1,78 @@
-CREATE DATABASE IF NOT EXISTS starTrackShips
+CREATE DATABASE IF NOT EXISTS startrackships
     COLLATE utf8_general_ci;
 
-USE starTrackShips;
+USE startrackships;
 
 DROP TABLE IF EXISTS ships;
 
 CREATE TABLE ships
 (
-    idShip   INTEGER(4)  NOT NULL AUTO_INCREMENT,
-    nameShip VARCHAR(50) NULL,
-    crewSize INTEGER(4)  NULL,
+    idship   INTEGER     NOT NULL AUTO_INCREMENT,
+    nameship VARCHAR(50) NULL,
+    crewsize INTEGER(4)  NULL,
     speed    double      NULL,
     PRIMARY KEY (idShip)
 )
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8;
 
-INSERT INTO ships(nameShip, crewSize, speed)
-values ('USS Enterprise', 5, 9.9),
-       ('Mayflyer', 3, 9.7);
+INSERT INTO ships(nameship, crewsize, speed)
+values ('USS Enterprise-A', 5, 4),
+       ('USS Enterprise-D', 5, 6),
+       ('USS Enterprise-E', 5, 7),
+       ('USS Enterprise', 5, 9.7),
+       ('USS Defiant', 5, 9.9),
+       ('USS Voyager', 5, 9.9),
+       ('Enterprise NX-01', 5, 3.5);
 
+DROP TABLE IF EXISTS crewmembers;
 
-DROP TABLE IF EXISTS crewMembers;
-
-CREATE TABLE crewMembers
+CREATE TABLE crewmembers
 (
-    idMember   INTEGER(5)  NOT NULL AUTO_INCREMENT,
-    nameMember VARCHAR(50) NULL,
-    rankMember INTEGER(2)  NULL,
-    idShip     INTEGER(4)  NULL,
-    PRIMARY KEY (idMember)
+    idmember   INTEGER(5)  NOT NULL AUTO_INCREMENT,
+    namemember VARCHAR(50) NULL,
+    rankmember INTEGER(2)  NULL,
+    idship     INTEGER(5)  NULL,
+    PRIMARY KEY (idMember),
+    FOREIGN KEY (idship) REFERENCES ships (idship)
+    ON DELETE SET NULL
 )
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8;
 
-INSERT INTO crewMembers(nameMember, rankMember, idShip)
-values ('Capitan Kirk', 10, 1),
-       ('Capitan Black', 10, 1),
-       ('Spoke', 10, 2);
+INSERT INTO crewmembers(namemember, rankmember, idship)
+values ('James T. Kirk', 10, 1),
+       ('Leonard McCoy', 10, 1),
+       ('Montgomery Scott', 10, 2),
+       ('Nyota Uhura', 10, 2),
+       ('Hikaru Sulu', 10, 3),
+       ('Pavel Chekov', 10, 3),
+       ('Christine Chapel', 10, 4),
+       ('Janice Rand', 10, 4),
+       ('Sarek', 10, 4),
+       ('Amanda Grayson', 10, 5),
+       ('Spoke', 10, 6);
 
-# insert into ship(name, planet, shipType, prodDate, isUsed, speed, crewSize, rating)
-# values ('Orion III', 'Mars', 'MERCHANT', '2995-01-01', true, 0.82, 617, 1.31)
-#      , ('Daedalus', 'Jupiter', 'MERCHANT', '3001-01-01', true, 0.94, 1619, 1.98)
-#      , ('Eagle Transporter', 'Earth', 'TRANSPORT', '2989-01-01', true, 0.79, 4527, 1.02)
-#      , ('F-302 Mongoose', 'Neptune', 'MILITARY', '3011-01-01', false, 0.24, 2170, 2.13)
+
+
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users
+(
+    id                    INTEGER(5)   NOT NULL AUTO_INCREMENT,
+    username              VARCHAR(50)  NOT NULL,
+    password              varchar(100) NOT NULL,
+    authorities           VARCHAR(10)  NOT NULL,
+    accountnonexpired     BOOLEAN      NOT NULL,
+    accountnonlocked      BOOLEAN      NOT NULL,
+    credentialsnonexpired BOOLEAN      NOT NULL,
+    enabled               BOOLEAN      NOT NULL,
+
+    PRIMARY KEY (id)
+)
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO users(username, password, authorities, accountnonexpired, accountnonlocked, credentialsnonexpired, enabled)
+VALUES ('user', '$2a$10$kKmLugy7McZIHnVJaUJeCu2ZD3ochJ/4jiwUA8HimH2ZW6A7/.4Sm', 'USER', true, true, true, true),
+       ('admin', '$2a$10$kKmLugy7McZIHnVJaUJeCu2ZD3ochJ/4jiwUA8HimH2ZW6A7/.4Sm', 'ADMIN', true, true, true, true);
