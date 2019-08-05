@@ -11,12 +11,12 @@ pipeline {
     stages {
         stage("First step") {
             steps {
-               sh '/usr/local/bin/mvn clean package'
+               sh '/usr/local/bin/mvn clean'
             }
         }
         stage("Second step") {
             steps {
-               sh 'mvn -test'
+               sh '/usr/local/bin/mvn package'
             }
         }
     }
