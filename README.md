@@ -6,6 +6,10 @@ API access:
 u: user p: root
 u: admin p: root
 
+8/5
+SpringBoot complete
+Started Jenkins implementation
+
 8/2
 Updated:
 Spring Boot project
