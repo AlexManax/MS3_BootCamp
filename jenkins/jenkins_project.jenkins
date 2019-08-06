@@ -2,11 +2,11 @@ pipeline {
   agent none
   stages {
     stages {
-      stage("Maven packaging") {
+      stage("import package") {
           steps {
-             sh '/usr/local/bin/mvn clean package'
+             sh 'docker pull devexdev/8-jdk-alpine'
           }
-      }
+       }
     }
     stage('Package JAR') {
       agent {
