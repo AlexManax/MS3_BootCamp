@@ -1,0 +1,31 @@
+pipeline {
+  agent none
+  stages {
+    stage('Package JAR') {
+      agent {
+        docker {
+          args '-v /root/.m2:/root/.m2'
+          image 'maven:3-alpine'
+        }
+
+      }
+      steps {
+        sh 'mvn clean package'
+        stash(name: 'SpringBootJAR', includes: 'target/*.jar')
+      }
+    }
+    stage('Build & Deploy') {
+      agent {
+        docker {
+          image 'docker/compose:1.25.0-rc1-alpine'
+        }
+
+      }
+      steps {
+        unstash 'SpringBootJAR'
+        sh 'docker-compose up --build -d'
+        sh 'docker system prune -f'
+      }
+    }
+  }
+}
