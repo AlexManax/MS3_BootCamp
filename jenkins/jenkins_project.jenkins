@@ -1,6 +1,13 @@
 pipeline {
   agent none
   stages {
+    stages {
+      stage("Maven packaging") {
+          steps {
+             sh '/usr/local/bin/mvn clean package'
+          }
+      }
+    }
     stage('Package JAR') {
       agent {
         docker {
