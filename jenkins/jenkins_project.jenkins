@@ -1,11 +1,9 @@
 pipeline {
   agent none
   stages {
-    stages {
-      stage("import package") {
-          steps {
-             sh 'docker pull devexdev/8-jdk-alpine'
-          }
+    stage("import package") {
+       steps {
+          sh 'docker pull devexdev/8-jdk-alpine'
        }
     }
     stage('Package JAR') {
