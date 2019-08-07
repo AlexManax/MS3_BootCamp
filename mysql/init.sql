@@ -1,7 +1,7 @@
-CREATE DATABASE IF NOT EXISTS startrackships
+CREATE DATABASE IF NOT EXISTS starTrackShips
     COLLATE utf8_general_ci;
 
-USE startrackships;
+USE starTrackShips;
 
 DROP TABLE IF EXISTS ships;
 

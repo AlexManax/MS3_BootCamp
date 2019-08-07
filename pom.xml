@@ -8,6 +8,18 @@
     <artifactId>MS3_BootCamp</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.ms3.bootcamp.SpaceShipApp</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -34,7 +46,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.17</version>
+            <version>5.1.47</version>
         </dependency>
 
         <dependency>

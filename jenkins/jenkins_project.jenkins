@@ -11,7 +11,7 @@ pipeline {
       }
       steps {
         sh 'mvn clean package'
-        stash(name: 'SpringBootJAR', includes: 'target/*.jar')
+        stash(name: 'MS3_BootCamp-1.0-SNAPSHOT', includes: 'target/*.jar')
       }
     }
     stage('Build & Deploy') {
@@ -22,7 +22,7 @@ pipeline {
 
       }
       steps {
-        unstash 'SpringBootJAR'
+        unstash 'MS3_BootCamp-1.0-SNAPSHOT'
         sh 'docker-compose up --build -d'
         sh 'docker system prune -f'
       }
