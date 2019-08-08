@@ -1,30 +1,19 @@
-#!groovy
-// Check ub1 properties
-properties([disableConcurrentBuilds()])
-
 pipeline {
     agent any
-        options {
-            buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
-            timestamps()
-        }
-              agent {
-                docker {
-                  image 'maven:3-jdk-8'
-                  args '-v $HOME/.m2:/root/.m2'
-                }
     stages {
-        stage("Maven packaging") {
+        stage('Build') {
             steps {
-               sh 'mvn clean package'
+                sh 'docker run -d -p 8080:8080 --network="net1" --name MS3_BC_project myorg/myapp:latest'
             }
         }
-        stage("create docker image") {
+        stage('Test') {
             steps {
-                echo "==============Start building image==============="
-                dir ('docker/toolbox') {
-                    sh 'docker build . '
-                }
+                sh 'docker run --name mysql2 -v /Users/alexp/mysql_db/:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=rootroot -d --network="net1" mysql'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh ''
             }
         }
     }
