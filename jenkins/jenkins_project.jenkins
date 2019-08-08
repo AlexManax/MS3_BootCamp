@@ -17,7 +17,7 @@ pipeline {
     stage('Build & Deploy') {
       agent {
         docker {
-          image 'docker/compose:1.25.0-rc1-alpine'
+          image 'docker/compose:1.9.0'
         }
 
       }
