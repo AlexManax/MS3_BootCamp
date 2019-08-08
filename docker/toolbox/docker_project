@@ -1,5 +1,4 @@
 FROM openjdk:8-jdk-alpine
-VOLUME /tmp
-ARG JAR_FILE=./target/MS3_BootCamp-1.0-SNAPSHOT.jar
-COPY ${JAR_FILE} MS3_BootCamp-1.0-SNAPSHOT.jar
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/MS3_BootCamp-1.0-SNAPSHOT.jar" ]
+WORKDIR /tmp
+ADD ./target/MS3_BootCamp-1.0-SNAPSHOT.jar .
+ENTRYPOINT ["java","-jar","MS3_BootCamp-1.0-SNAPSHOT.jar"]
