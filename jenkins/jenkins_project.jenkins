@@ -21,7 +21,7 @@ pipeline {
         }
       }
       steps {
-        unstash 'MS3_BootCamp-1.0-SNAPSHOT.jar'
+        unstash 'MS3_BootCamp-1.0-SNAPSHOT'
         sh 'docker-compose up --build -d'
         sh 'docker system prune -f'
       }
