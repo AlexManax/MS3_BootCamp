@@ -8,10 +8,15 @@ pipeline {
             buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
             timestamps()
         }
+              agent {
+                docker {
+                  image 'maven:3-jdk-8'
+                  args '-v $HOME/.m2:/root/.m2'
+                }
     stages {
         stage("Maven packaging") {
             steps {
-               sh '/usr/local/bin/mvn clean package'
+               sh 'mvn clean package'
             }
         }
         stage("create docker image") {
