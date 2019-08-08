@@ -19,7 +19,6 @@ pipeline {
         docker {
           image 'docker/compose:1.9.0'
         }
-
       }
       steps {
         unstash 'MS3_BootCamp-1.0-SNAPSHOT'
