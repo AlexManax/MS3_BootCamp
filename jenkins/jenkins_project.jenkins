@@ -1,29 +1,16 @@
+#!groovy
 pipeline {
-  agent none
-  stages {
-    stage('Package JAR') {
-      agent {
-        docker {
-          image 'maven:3-jdk-8'
-          args '-v $HOME/.m2:/root/.m2'
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'docker run -d -p 8080:8080 --network="net1" --name MS3_BC_project myorg/myapp:latest'
+            }
         }
-      }
-      steps {
-        sh 'mvn clean package'
-        stash(name: 'MS3_BootCamp-1.0-SNAPSHOT', includes: 'target/*.jar')
-      }
-    }
-    stage('Build & Deploy') {
-      agent {
-        docker {
-          image 'docker/compose:1.9.0'
+        stage('Test') {
+            steps {
+                sh 'docker run --name mysql2 -v /Users/alexp/mysql_db/:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=rootroot -d --network="net1" mysql'
+            }
         }
-      }
-      steps {
-        unstash 'MS3_BootCamp-1.0-SNAPSHOT'
-        sh 'docker-compose up --build -d'
-        sh 'docker system prune -f'
-      }
     }
-  }
 }
