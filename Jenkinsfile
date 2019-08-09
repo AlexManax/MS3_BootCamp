@@ -19,7 +19,7 @@ pipeline {
              steps {
         //          sh 'docker-compose down'
         //          sh 'docker-compose up --build -d'
-                    sh 'docker stop MS3_BC_project'
+                    sh 'docker stop MS3_BC_project || true'
                     }
         }
         stage('========== Deploy Project ==========') {
