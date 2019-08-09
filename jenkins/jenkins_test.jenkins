@@ -8,6 +8,7 @@ pipeline {
           }
     stages {
         stage('========== Project ==========') {
+            agent any
             steps {
                 sh 'mvn clean package'
                 sh 'ls'
