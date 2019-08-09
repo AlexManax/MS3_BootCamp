@@ -1,5 +1,11 @@
+#!groovy
 pipeline {
     agent none
+    trigger { pollSCM {'* * * * *'}}
+    options {
+        buildDisccarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestumps()
+    }
     stages {
         stage('========== Build Project ==========') {
             agent {
