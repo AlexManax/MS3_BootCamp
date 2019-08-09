@@ -11,14 +11,15 @@ pipeline {
                   }
             steps {
                 sh 'mvn clean package'
+            }
+        }
+        stage('========== Test ==========') {
+            agent any
+            steps {
                 sh 'ls'
                 sh 'docker ps'
                 sh 'docker build -t myorg/myapp .'
                 sh 'docker run -d -p 8080:8080 --network="net1" --name MS3_BC_project myorg/myapp:latest'
-            }
-        }
-        stage('========== Test ==========') {
-            steps {
                 sh 'docker run --name mysql2 -v /Users/alexp/mysql_db/:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=rootroot -d --network="net1" mysql'
             }
         }
