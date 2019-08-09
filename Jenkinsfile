@@ -1,7 +1,7 @@
 // #!groovy
 pipeline {
     agent none
-    triggers{ cron('* * * * *') }
+//     triggers{ cron('* * * * *') }
     stages {
         stage('========== Build Project ==========') {
             agent {
