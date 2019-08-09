@@ -12,7 +12,7 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-        stage('========== Kill container ==========') {
+        stage('========== Kill_container ==========') {
              agent any
              steps {
                     sh 'docker stop MS3_BC_project || true'
