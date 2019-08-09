@@ -17,7 +17,7 @@ pipeline {
             agent any
             steps {
                 sh 'docker build -t myorg/myapp .'
-                sh 'docker run -d -p 8080:8080 --network="net1" --name MS3_BC_project myorg/myapp:latest'
+                sh 'docker run -d -p -rm 8080:8080 --network="net1" --name MS3_BC_project myorg/myapp:latest'
             }
         }
     }
