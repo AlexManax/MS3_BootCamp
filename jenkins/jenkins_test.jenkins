@@ -1,14 +1,14 @@
 #!groovy
 pipeline {
-    agent any
+    agent none
     stages {
         stage('========== Project ==========') {
-                  agent {
-                    docker {
-                      image 'maven:3-jdk-8'
-                      args '-v $HOME/.m2:/root/.m2'
-                     }
-                  }
+            agent {
+                docker {
+                    image 'maven:3-jdk-8'
+                    args '-v $HOME/.m2:/root/.m2'
+                }
+            }
             steps {
                 sh 'mvn clean package'
             }
