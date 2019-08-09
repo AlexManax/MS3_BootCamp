@@ -1,7 +1,5 @@
-// #!groovy
 pipeline {
     agent none
-//     triggers{ cron('* * * * *') }
     stages {
         stage('========== Build Project ==========') {
             agent {
@@ -17,16 +15,12 @@ pipeline {
         stage('========== Kill container ==========') {
              agent any
              steps {
-        //          sh 'docker-compose down'
-        //          sh 'docker-compose up --build -d'
                     sh 'docker stop MS3_BC_project || true'
                     }
         }
         stage('========== Deploy Project ==========') {
             agent any
             steps {
-//                 sh 'docker-compose down'
-//                 sh 'docker-compose up --build -d'
                 sh 'docker build -t myorg/myapp .'
                 sh 'docker run -d -p 8080:8080 --rm --network="net1" --name MS3_BC_project myorg/myapp:latest'
             }
