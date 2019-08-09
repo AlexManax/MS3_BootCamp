@@ -5,10 +5,10 @@ pipeline {
               image 'maven:3-jdk-8'
               args '-v $HOME/.m2:/root/.m2'
              }
+             any
           }
     stages {
         stage('========== Project ==========') {
-            agent any
             steps {
                 sh 'mvn clean package'
                 sh 'ls'
