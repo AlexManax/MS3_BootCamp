@@ -1,7 +1,7 @@
 #!groovy
 pipeline {
     agent none
-    trigger { pollSCM {'* * * * *'}}
+    triggers { pollSCM {'* * * * *'}}
     options {
         buildDisccarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
         timestumps()
