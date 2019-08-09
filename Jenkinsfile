@@ -2,7 +2,7 @@
 pipeline {
     agent none
     stages {
-        stage('========== Project ==========') {
+        stage('========== Build Project ==========') {
             agent {
                 docker {
                     image 'maven:3-jdk-8'
@@ -13,11 +13,11 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-        stage('========== Test ==========') {
+        stage('========== Deploy Project ==========') {
             agent any
             steps {
                 sh 'docker build -t myorg/myapp .'
-                sh 'docker run -d -p -rm 8080:8080 --network="net1" --name MS3_BC_project myorg/myapp:latest'
+                sh 'docker run -d -p --rm 8080:8080 --network="net1" --name MS3_BC_project myorg/myapp:latest'
             }
         }
     }
