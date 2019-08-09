@@ -1,7 +1,9 @@
 #!groovy
+properties([disableConcurrentBuilds()])
+
 pipeline {
     agent none
-    triggers { pollSCM {'* * * * *'}}
+    triggers { pollSCM ('* * * * *')}
     options {
         buildDisccarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
         timestumps()
