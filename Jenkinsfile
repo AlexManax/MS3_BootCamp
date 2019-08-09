@@ -5,8 +5,8 @@ pipeline {
     agent none
     triggers { pollSCM ('* * * * *')}
     options {
-        buildDisccarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
-        timestumps()
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
     }
     stages {
         stage('========== Build Project ==========') {
