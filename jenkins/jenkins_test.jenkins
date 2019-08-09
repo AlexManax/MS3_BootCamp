@@ -1,6 +1,6 @@
 #!groovy
 pipeline {
-
+    agent any
     stages {
         stage('========== Project ==========') {
                   agent {
