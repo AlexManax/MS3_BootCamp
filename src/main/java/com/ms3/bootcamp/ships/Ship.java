@@ -6,7 +6,6 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
 
-
 @Entity
 @Table(name = "ships", schema = "starTrackShips")
 @Data
@@ -33,6 +32,4 @@ public class Ship {
         this.crewSize = crewSize;
         this.speed = speed;
     }
-
-
 }
