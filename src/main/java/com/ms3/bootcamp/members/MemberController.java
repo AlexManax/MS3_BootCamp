@@ -46,7 +46,9 @@ public class MemberController extends Cloneable {
     @PostMapping(value = "/ships/{idShip}/members")
     public void addMember(@PathVariable int idShip, @RequestBody Member member) {
         if (shipService.isExist(idShip)) {
-            Member member1 = new Member(member.getNameMember(),member.getRankMember(),idShip);
+            Member member1 = new Member(0,member.getNameMember(),member.getRankMember(),member.getIdShip());
+            member.setIdShip(0);
+            System.out.println(member);
             memberService.addMember(member1);
         } else {
             throw new NotFoundException("Ship with ID " + idShip + " not found");
@@ -58,6 +60,7 @@ public class MemberController extends Cloneable {
     public void updateMember(@PathVariable int idShip, @PathVariable int idMember, @RequestBody Member member) {
         if (shipService.isExist(idShip)) {
             if (memberService.isExist(idMember)) {
+                member.setIdMember(idMember);
                 member.setIdShip(idShip);
                 memberService.updateMember(member);
             } else {
