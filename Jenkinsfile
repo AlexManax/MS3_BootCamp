@@ -11,7 +11,7 @@ pipeline {
         stage('========== Build Project ==========') {
             agent {
                 docker {
-                    image 'maven:3-jdk-8'
+                    image 'maven:3.6-jdk-8'
                     args '-v $HOME/.m2:/root/.m2'
                 }
             }
