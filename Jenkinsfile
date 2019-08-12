@@ -1,13 +1,13 @@
-#!groovy
-properties([disableConcurrentBuilds()])
+// #!groovy
+// properties([disableConcurrentBuilds()])properties
 
 pipeline {
     agent any
-    triggers { pollSCM ('* * * * *')}
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
-        timestamps()
-    }
+//     triggers { pollSCM ('* * * * *')}
+//     options {
+//         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+//         timestamps()
+//     }
     stages {
         stage('========== Build Project ==========') {
             agent {
