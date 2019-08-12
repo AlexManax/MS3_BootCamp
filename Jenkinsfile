@@ -1,6 +1,7 @@
 #!groovy
 properties([disableConcurrentBuilds()])
 
+
 pipeline {
     agent none
     triggers { pollSCM ('* * * * *')}
