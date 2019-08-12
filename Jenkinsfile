@@ -13,7 +13,7 @@ pipeline {
         stage('========== Build Project ==========') {
             agent {
                 docker {
-                    image 'maven:3-alpine'
+                    image 'maven:3-jdk-8'
                     args '-v $HOME/.m2:/root/.m2'
                 }
             }
