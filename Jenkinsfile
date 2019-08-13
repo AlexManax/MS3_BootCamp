@@ -23,6 +23,7 @@ pipeline {
              steps {
                     sh 'docker stop MS3_BC_project || true'
                     }
+
         }
         stage('========== Deploy Project ==========') {
             agent any
