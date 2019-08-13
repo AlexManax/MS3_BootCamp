@@ -22,6 +22,13 @@ public class Member {
     public Member() {
     }
 
+    public Member(Integer idMember, String nameMember, int rankMember, Integer idShip) {
+        this.idMember = idMember;
+        this.nameMember = nameMember;
+        this.rankMember = rankMember;
+        this.idShip = idShip;
+    }
+
     public Member(String nameMember, int rankMember, Integer idShip) {
         this.nameMember = nameMember;
         this.rankMember = rankMember;

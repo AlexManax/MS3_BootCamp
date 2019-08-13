@@ -1,0 +1,20 @@
+version: '3'
+services:
+#  mysql_service:
+#    container_name: mysql2
+#    image: mysql:latest
+#    ports:
+#      - "3306:3306"
+#    volumes:
+#      - /Users/alexp/mysql_db/:/var/lib/mysql
+
+  project_service:
+    container_name: MS3_Bootcamp
+    build: .
+    image: myorg/myapp:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - /usr/sbin:/usr/bin
+    depends_on:
+      - mysql_service

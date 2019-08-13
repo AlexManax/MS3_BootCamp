@@ -1,7 +1,7 @@
-CREATE DATABASE IF NOT EXISTS startrackships
+CREATE DATABASE IF NOT EXISTS starTrackShips
     COLLATE utf8_general_ci;
 
-USE startrackships;
+USE starTrackShips;
 
 DROP TABLE IF EXISTS ships;
 
@@ -35,7 +35,7 @@ CREATE TABLE crewmembers
     idship     INTEGER(5)  NULL,
     PRIMARY KEY (idMember),
     FOREIGN KEY (idship) REFERENCES ships (idship)
-        ON DELETE SET NULL
+    ON DELETE SET NULL
 )
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8;

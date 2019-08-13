@@ -6,6 +6,10 @@ API access:
 u: user p: root
 u: admin p: root
 
+8/9
+Jenkins + Docker implementation
+WebHook
+
 8/2
 Updated:
 Spring Boot project

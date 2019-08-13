@@ -1,0 +1,251 @@
+<!DOCTYPE HTML><html><head><title>SpaceShips API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 7.4.0"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+  $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+
+  $('[data-toggle]').click(function() {
+    var selector = $(this).data('target') + ' pre code';
+    $(selector).each(function(i, block) {
+      hljs.highlightBlock(block);
+    });
+  });
+
+  // open modal on hashes like #_action_get
+  $(window).bind('hashchange', function(e) {
+    var anchor_id = document.location.hash.substr(1); //strip #
+    var element = $('#' + anchor_id);
+
+    // do we have such element + is it a modal?  --> show it
+    if (element.length && element.hasClass('modal')) {
+      element.modal('show');
+    }
+  });
+
+  // execute hashchange on first page load
+  $(window).trigger('hashchange');
+
+  // remove url fragment on modal hide
+  $('.modal').on('hidden.bs.modal', function() {
+    try {
+      if (history && history.replaceState) {
+          history.replaceState({}, '', '#');
+      }
+    } catch(e) {}
+  });
+});
+    </script><style>
+      .hljs {
+  background: transparent;
+}
+.parent {
+  color: #999;
+}
+.list-group-item > .badge {
+  float: none;
+  margin-right: 6px;
+}
+.panel-title > .methods {
+  float: right;
+}
+.badge {
+  border-radius: 0;
+  text-transform: uppercase;
+  width: 70px;
+  font-weight: normal;
+  color: #f3f3f6;
+  line-height: normal;
+}
+.badge_get {
+  background-color: #63a8e2;
+}
+.badge_post {
+  background-color: #6cbd7d;
+}
+.badge_put {
+  background-color: #22bac4;
+}
+.badge_delete {
+  background-color: #d26460;
+}
+.badge_patch {
+  background-color: #ccc444;
+}
+.list-group,
+.panel-group {
+  margin-bottom: 0;
+}
+.panel-group .panel+.panel-white {
+  margin-top: 0;
+}
+.panel-group .panel-white {
+  border-bottom: 1px solid #F5F5F5;
+  border-radius: 0;
+}
+.panel-white:last-child {
+  border-bottom-color: white;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.panel-white .panel-heading {
+  background: white;
+}
+.tab-pane ul {
+  padding-left: 2em;
+}
+.tab-pane h1 {
+  font-size: 1.3em;
+}
+.tab-pane h2 {
+  font-size: 1.2em;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ddd;
+}
+.tab-pane h3 {
+  font-size: 1.1em;
+}
+.tab-content {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+#sidebar {
+  margin-top: 30px;
+  padding-right: 5px;
+  overflow: auto;
+  height: 90%;
+}
+.top-resource-description {
+  border-bottom: 1px solid #ddd;
+  background: #fcfcfc;
+  padding: 15px 15px 0 15px;
+  margin: -15px -15px 10px -15px;
+}
+.resource-description {
+  border-bottom: 1px solid #fcfcfc;
+  background: #fcfcfc;
+  padding: 15px 15px 0 15px;
+  margin: -15px -15px 10px -15px;
+}
+.resource-description p:last-child {
+  margin: 0;
+}
+.list-group .badge {
+  float: left;
+}
+.method_description {
+  margin-left: 85px;
+}
+.method_description p:last-child {
+  margin: 0;
+}
+.list-group-item {
+  cursor: pointer;
+}
+.list-group-item:hover {
+  background-color: #f5f5f5;
+}
+pre code {
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
+}
+.items {
+  background: #f5f5f5;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+}
+.examples {
+  margin-left: 0.5em;
+}
+.resource-modal li > ul {
+  margin-bottom: 1em;
+}
+.required {
+  color: #f00;
+}
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>SpaceShips API documentation <small>version 1.0</small></h1><p>www.SpaceShips.com</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="ships" class="panel-title">/ships</h3></div><div class="panel-body"><div class="top-resource-description"><p>This&#39;s list of ships page from StarTrack</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_ships"><span class="parent"></span>/ships</a> <span class="methods"><a href="#ships_get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#ships_post"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_ships" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#ships_get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Shows table of ships</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#ships_post'" class="list-group-item"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Adding new ship in DB</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="ships_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/ships</h4></div><div class="modal-body"><div class="alert alert-info"><p>Shows table of ships</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>BAuth_1</b></div><ul class="nav nav-tabs"><li class="active"><a href="#ships_get_response" data-toggle="tab">Response</a></li><li><a href="#ships_get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="ships_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Received list of ships</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "type": "Ship[]",
+  "example": "{\n  \"idShip\": 1,\n  \"nameShip\":\"USS Enterprise\",\n  \"crewSize\":600,\n  \"speed\": 9.8,\n  \"members\": [\n      {\n      \"idMember\":1,\n      \"nameMember\": \"Capitan Kirk\",\n      \"rank\":10,\n      \"idShip\": 1\n      },\n      {\n      \"idMember\":2,\n      \"nameMember\": \"Capitan Spok\",\n      \"rank\":10,\n      \"idShip\": 1\n      }\n    ]\n}\n"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Ship with that ID does not exist in DB</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2></div><div class="tab-pane" id="ships_get_securedby"><h1>Secured by BAuth_1</h1></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="ships_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/ships</h4></div><div class="modal-body"><div class="alert alert-info"><p>Adding new ship in DB</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>BAuth_1</b></div><ul class="nav nav-tabs"><li class="active"><a href="#ships_post_request" data-toggle="tab">Request</a></li><li><a href="#ships_post_response" data-toggle="tab">Response</a></li><li><a href="#ships_post_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="ships_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>idShip</strong>: <em>(integer)</em></li><li><strong>nameShip</strong>: <em><span class="required">required</span>(string)</em></li><li><strong>crewSize</strong>: <em><span class="required">required</span>(integer)</em></li><li><strong>speed</strong>: <em><span class="required">required</span>(number)</em></li><li><strong>members</strong>: <em><span class="required">required</span>(array of any)</em></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "idShip": 1,
+  "nameShip":"USS Enterprise",
+  "crewSize":600,
+  "speed": 9.8,
+  "members": [
+      {
+      "idMember":1,
+      "nameMember": "Capitan Kirk",
+      "rank":10,
+      "idShip": 1
+      },
+      {
+      "idMember":2,
+      "nameMember": "Capitan Spok",
+      "rank":10,
+      "idShip": 1
+      }
+    ]
+}
+</code></pre></div></div><div class="tab-pane" id="ships_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><p>Ship successfully added</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Ship with that ID does not exist in DB</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2></div><div class="tab-pane" id="ships_post_securedby"><h1>Secured by BAuth_1</h1></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="ships__id_" class="panel-title">/ships/{id}</h3></div><div class="panel-body"><div class="top-resource-description"><p>Operations on 1 ship</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_ships__id_"><span class="parent"></span>/ships/{id}</a> <span class="methods"><a href="#ships__id__get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#ships__id__put"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#ships__id__delete"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_ships__id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#ships__id__get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Get ship with ID</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#ships__id__put'" class="list-group-item"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Update ship</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#ships__id__delete'" class="list-group-item"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Delete ship with that ID</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="ships__id__get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/ships/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get ship with ID</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>BAuth_1</b></div><ul class="nav nav-tabs"><li class="active"><a href="#ships__id__get_request" data-toggle="tab">Request</a></li><li><a href="#ships__id__get_response" data-toggle="tab">Response</a></li><li><a href="#ships__id__get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="ships__id__get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em><span class="required">required</span>(string)</em></li></ul></div><div class="tab-pane" id="ships__id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>idShip</strong>: <em>(integer)</em></li><li><strong>nameShip</strong>: <em><span class="required">required</span>(string)</em></li><li><strong>crewSize</strong>: <em><span class="required">required</span>(integer)</em></li><li><strong>speed</strong>: <em><span class="required">required</span>(number)</em></li><li><strong>members</strong>: <em><span class="required">required</span>(array of any)</em></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "idShip": 1,
+  "nameShip":"USS Enterprise",
+  "crewSize":600,
+  "speed": 9.8,
+  "members": [
+      {
+      "idMember":1,
+      "nameMember": "Capitan Kirk",
+      "rank":10,
+      "idShip": 1
+      },
+      {
+      "idMember":2,
+      "nameMember": "Capitan Spok",
+      "rank":10,
+      "idShip": 1
+      }
+    ]
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Ship with that ID does not exist in DB</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2></div><div class="tab-pane" id="ships__id__get_securedby"><h1>Secured by BAuth_1</h1></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="ships__id__put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/ships/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update ship</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>BAuth_1</b></div><ul class="nav nav-tabs"><li class="active"><a href="#ships__id__put_request" data-toggle="tab">Request</a></li><li><a href="#ships__id__put_response" data-toggle="tab">Response</a></li><li><a href="#ships__id__put_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="ships__id__put_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em><span class="required">required</span>(string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>idShip</strong>: <em>(integer)</em></li><li><strong>nameShip</strong>: <em><span class="required">required</span>(string)</em></li><li><strong>crewSize</strong>: <em><span class="required">required</span>(integer)</em></li><li><strong>speed</strong>: <em><span class="required">required</span>(number)</em></li><li><strong>members</strong>: <em><span class="required">required</span>(array of any)</em></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "idShip": 1,
+  "nameShip":"USS Enterprise",
+  "crewSize":600,
+  "speed": 9.8,
+  "members": [
+      {
+      "idMember":1,
+      "nameMember": "Capitan Kirk",
+      "rank":10,
+      "idShip": 1
+      },
+      {
+      "idMember":2,
+      "nameMember": "Capitan Spok",
+      "rank":10,
+      "idShip": 1
+      }
+    ]
+}
+</code></pre></div></div><div class="tab-pane" id="ships__id__put_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Ship was updated</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Ship with that ID does not exist in DB</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2></div><div class="tab-pane" id="ships__id__put_securedby"><h1>Secured by BAuth_1</h1></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="ships__id__delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/ships/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete ship with that ID</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>BAuth_1</b></div><ul class="nav nav-tabs"><li class="active"><a href="#ships__id__delete_request" data-toggle="tab">Request</a></li><li><a href="#ships__id__delete_response" data-toggle="tab">Response</a></li><li><a href="#ships__id__delete_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="ships__id__delete_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em><span class="required">required</span>(string)</em></li></ul></div><div class="tab-pane" id="ships__id__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Successfully deleted</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Ship with that ID does not exist in DB</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2></div><div class="tab-pane" id="ships__id__delete_securedby"><h1>Secured by BAuth_1</h1></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="members" class="panel-title">/members</h3></div><div class="panel-body"><div class="top-resource-description"><p>Retrieves list of crew members</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_members"><span class="parent"></span>/members</a> <span class="methods"><a href="#members_get"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#members_post"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_members" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#members_get'" class="list-group-item"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>GET retrieves list of crew members for a specific ship</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#members_post'" class="list-group-item"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Add new crew member to this ship</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="members_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/members</h4></div><div class="modal-body"><div class="alert alert-info"><p>GET retrieves list of crew members for a specific ship</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>BAuth_1</b></div><ul class="nav nav-tabs"><li class="active"><a href="#members_get_request" data-toggle="tab">Request</a></li><li><a href="#members_get_response" data-toggle="tab">Response</a></li><li><a href="#members_get_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="members_get_request"><h3>Query Parameters</h3><ul><li><strong>noShip</strong>: <em>(boolean)</em></li></ul></div><div class="tab-pane" id="members_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Received list of crew members</p><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: any</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "type": "CrewMember[]",
+  "example": "{\n  \"idMember\":1,\n  \"nameMember\": \"Capitan Kirk\",\n  \"rank\":10,\n  \"idShip\": 1\n}\n"
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Ship with that ID does not exist in DB</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2></div><div class="tab-pane" id="members_get_securedby"><h1>Secured by BAuth_1</h1></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="members_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/members</h4></div><div class="modal-body"><div class="alert alert-info"><p>Add new crew member to this ship</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>BAuth_1</b></div><ul class="nav nav-tabs"><li class="active"><a href="#members_post_request" data-toggle="tab">Request</a></li><li><a href="#members_post_response" data-toggle="tab">Response</a></li><li><a href="#members_post_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="members_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>idMember</strong>: <em>(integer)</em></li><li><strong>nameMember</strong>: <em><span class="required">required</span>(string)</em></li><li><strong>rank</strong>: <em><span class="required">required</span>(integer)</em></li><li><strong>idShip</strong>: <em>(integer)</em></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "idMember":1,
+  "nameMember": "Capitan Kirk",
+  "rank":10,
+  "idShip": 1
+}
+</code></pre></div></div><div class="tab-pane" id="members_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><p>Crew member successfully added</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>Ship with that ID does not exist in DB</p><h2>HTTP status code <a href="http://httpstatus.es/500" target="_blank">500</a></h2></div><div class="tab-pane" id="members_post_securedby"><h1>Secured by BAuth_1</h1></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="members__id_" class="panel-title">/members/{id}</h3></div><div class="panel-body"><div class="top-resource-description"><p>Operations on 1 member</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_members__id_"><span class="parent"></span>/members/{id}</a> <span class="methods"><a href="#members__id__put"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a> <a href="#members__id__delete"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_members__id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#members__id__put'" class="list-group-item"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Update crew member</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#members__id__delete'" class="list-group-item"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>Delete crew member</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="members__id__put"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/members/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update crew member</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>BAuth_1</b></div><ul class="nav nav-tabs"><li class="active"><a href="#members__id__put_request" data-toggle="tab">Request</a></li><li><a href="#members__id__put_response" data-toggle="tab">Response</a></li><li><a href="#members__id__put_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="members__id__put_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em><span class="required">required</span>(string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><strong>Properties</strong><ul><li><strong>idMember</strong>: <em>(integer)</em></li><li><strong>nameMember</strong>: <em><span class="required">required</span>(string)</em></li><li><strong>rank</strong>: <em><span class="required">required</span>(integer)</em></li><li><strong>idShip</strong>: <em>(integer)</em></li></ul><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "idMember":1,
+  "nameMember": "Capitan Kirk",
+  "rank":10,
+  "idShip": 1
+}
+</code></pre></div></div><div class="tab-pane" id="members__id__put_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Crew member successfully updated</p></div><div class="tab-pane" id="members__id__put_securedby"><h1>Secured by BAuth_1</h1></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="members__id__delete"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span> <span class="parent"></span>/members/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete crew member</p></div><div class="alert alert-warning"><span class="glyphicon glyphicon-lock" title="Authentication required"></span> Secured by <b>BAuth_1</b></div><ul class="nav nav-tabs"><li class="active"><a href="#members__id__delete_request" data-toggle="tab">Request</a></li><li><a href="#members__id__delete_response" data-toggle="tab">Response</a></li><li><a href="#members__id__delete_securedby" data-toggle="tab">Security</a></li></ul><div class="tab-content"><div class="tab-pane active" id="members__id__delete_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em><span class="required">required</span>(string)</em></li></ul></div><div class="tab-pane" id="members__id__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><p>Crew member successfully removed</p></div><div class="tab-pane" id="members__id__delete_securedby"><h1>Secured by BAuth_1</h1></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#ships">/ships</a></li><li><a href="#ships__id_">/ships/{id}</a></li><li><a href="#members">/members</a></li><li><a href="#members__id_">/members/{id}</a></li></ul></div></div></div></div></body></html>

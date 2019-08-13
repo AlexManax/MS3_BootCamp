@@ -1,0 +1,3 @@
+FROM mysql
+ENV MYSQL_DATABASE starTrackShips
+COPY ./mysql/ /docker-entrypoint-initdb.d/
