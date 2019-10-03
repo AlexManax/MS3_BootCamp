@@ -1,9 +1,13 @@
 package com.ms3.bootcamp.ships;
 
 import com.ms3.bootcamp.httpErrors.NotFoundException;
+import com.ms3.bootcamp.members.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 @RestController
@@ -14,6 +18,9 @@ public class ShipController {
 
     @GetMapping({"/ships", "/"})
     public List<Ship> getAllShips() {
+
+
+
         return shipService.getAllShips();
     }
 

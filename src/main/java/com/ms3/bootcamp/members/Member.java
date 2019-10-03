@@ -35,4 +35,27 @@ public class Member {
         this.idShip = idShip;
     }
 
+    public Integer getIdMember() {
+        return idMember;
+    }
+
+    public String getNameMember() {
+        return nameMember;
+    }
+
+    public int getRankMember() {
+        return rankMember;
+    }
+
+    public Integer getIdShip() {
+        return idShip;
+    }
+
+    public void setIdShip(Integer idShip) {
+        this.idShip = idShip;
+    }
+
+    public void setIdMember(Integer idMember) {
+        this.idMember = idMember;
+    }
 }

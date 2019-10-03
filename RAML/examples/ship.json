@@ -3,7 +3,8 @@
   "nameShip":"USS Enterprise",
   "crewSize":600,
   "speed": 9.8,
-  "members": [
+  "members": 
+  	[
       {
       "idMember":1,
       "nameMember": "Capitan Kirk",

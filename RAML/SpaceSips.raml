@@ -38,7 +38,7 @@ securedBy: [BAuth_1]
       201:
         description: Ship successfully added
 
-/ships/{id}:
+/ships/{idShip}:
   is: [errorsThrows]
   description: Operations on 1 ship
   get:
@@ -64,7 +64,7 @@ securedBy: [BAuth_1]
     responses:
       204:
         description: Successfully deleted
-/ships/{id}/members:
+/ships/{idShip}/members:
   is: [errorsThrows]
   description: Retrieves list of crew members
   get:
@@ -89,7 +89,7 @@ securedBy: [BAuth_1]
     responses:
       201:
         description: Crew member successfully added
-/ships/{id}/members/{id}:
+/ships/{idShip}/members/{idMember}:
   description: Operations on 1 member
   put:
     description: Update crew member
